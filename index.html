@@ -4,270 +4,216 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>티칭 워케이셔너 - 지역의 새로운 가능성</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts - Noto Sans KR -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 15px;
       min-height: 100vh;
-    }
-    .container {
-      max-width: 1000px;
-      background: white;
-      margin: 0 auto;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-      overflow: hidden;
-      position: relative;
-    }
-    .header {
-      background: linear-gradient(135deg, rgba(255,107,107,0.9) 0%, rgba(255,165,0,0.9) 100%);
-      color: white;
-      padding: 30px;
-      position: relative;
-      text-align: center;
-    }
-    .header h1 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      margin-bottom: 8px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    .header .subtitle {
-      font-size: 1.3rem;
-      font-weight: 300;
-      opacity: 0.95;
-    }
-    .badge {
-      position: absolute;
-      top: 15px;
-      right: 30px;
-      background: #ffc107;
-      color: #2c3e50;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.8rem;
-      transform: rotate(15deg);
-    }
-    .hook-section {
-      padding: 25px 30px;
-      background: linear-gradient(45deg, #f8f9ff 0%, #fff5f5 100%);
-      border-left: 6px solid #ff6b6b;
-      text-align: center;
-    }
-    .hook-text {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #2c3e50;
-      line-height: 1.5;
-    }
-    .highlight {
-      color: #ff6b6b;
-      font-weight: 900;
-    }
-    .image-gallery {
       display: flex;
-      flex-direction: row;
+      align-items: center;
       justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      flex-wrap: wrap;
+      padding: 1rem; /* Added padding for smaller screens */
     }
-    .gallery-item {
-      text-align: center;
-      flex: 1 1 300px;
+    /* Custom gradient classes for background elements */
+    .bg-header-gradient {
+      background: linear-gradient(135deg, rgba(255,107,107,0.9) 0%, rgba(255,165,0,0.9) 100%);
     }
-    .gallery-item img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .bg-hook-gradient {
+      background: linear-gradient(45deg, #f8f9ff 0%, #fff5f5 100%);
     }
-    .image-caption {
-      margin-top: 8px;
-      font-size: 0.9rem;
-      color: #333;
-    }
-    .content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-      padding: 25px 30px;
-    }
-    .section {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border: 2px solid #f0f0f0;
-    }
-    .section h3 {
-      font-size: 1.3rem;
-      color: #2c3e50;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .icon {
-      font-size: 1.2rem;
-    }
-    .feature-list {
-      list-style: none;
-    }
-    .feature-list li {
-      padding: 6px 0;
-      border-bottom: 1px solid #eee;
-      font-size: 0.9rem;
-      color: #555;
-      position: relative;
-      padding-left: 20px;
-    }
-    .feature-list li:last-child {
-      border-bottom: none;
-    }
-    .feature-list li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: #ff6b6b;
-      font-weight: bold;
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-    .stat-box {
-      text-align: center;
-      padding: 12px 8px;
+    .bg-stat-gradient {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border-radius: 8px;
     }
-    .stat-number {
-      font-size: 1.4rem;
+    .text-highlight {
+      color: #ff6b6b;
       font-weight: 900;
-      display: block;
     }
-    .stat-label {
-      font-size: 0.8rem;
-      opacity: 0.9;
-    }
-    .footer {
-      background: #2c3e50;
-      color: white;
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .contact {
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-    .cta-button {
-      background: linear-gradient(45deg, #ff6b6b, #ffa500);
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 25px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255,107,107,0.4);
-      text-decoration: none;
+    /* Styles for Lucide Icons */
+    .lucide {
       display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    .cta-button:hover {
-      transform: translateY(-2px);
+      stroke-width: 2;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <div class="badge">🔥 1기 모집중</div>
-    <header class="header">
-      <h1>티칭 워케이셔너</h1>
-      <div class="subtitle">지역의 새로운 일자리 혁명이 시작됩니다</div>
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+  <div class="container relative mx-auto my-auto max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+    <!-- Badge for '1기 모집중' -->
+    <div class="absolute right-6 top-6 z-10 -rotate-12 rounded-full bg-amber-400 px-4 py-2 text-sm font-bold text-gray-800 shadow-md md:right-8 md:top-8">
+      🔥 1기 모집중
+    </div>
+
+    <!-- Header Section -->
+    <header class="bg-header-gradient relative p-8 text-center text-white md:p-12">
+      <h1 class="mb-2 text-4xl font-extrabold leading-tight drop-shadow-md md:text-5xl">티칭 워케이셔너</h1>
+      <p class="text-lg font-light opacity-95 md:text-xl">일과 여행, 교육이 어우러진 당신의 새로운 삶</p>
     </header>
 
-    <div class="hook-section">
-      <div class="hook-text">
-        🌟 <span class="highlight">전국을 무대로 활동하는 교육 전문가</span>를 양성하여<br />
-        제주 지역에 <span class="highlight">새로운 관광·교육 일자리</span>를 창출합니다
-      </div>
-    </div>
+    <!-- Hook Section - The Call to Adventure -->
+    <section class="bg-hook-gradient border-l-8 border-red-400 p-6 text-center md:p-8">
+      <p class="text-xl font-bold leading-relaxed text-gray-800 md:text-2xl">
+        🌟 상상해 보세요. <span class="text-highlight">아름다운 제주의 바람 속에서</span> 교육 전문가로 성장하며,<br class="md:hidden"/>
+        동시에 <span class="text-highlight">전국 곳곳을 무대 삼아 활동하는 당신</span>의 모습을!
+      </p>
+      <p class="mt-4 text-base text-gray-600 md:text-lg">
+        티칭 워케이셔너는 단순한 직업이 아닙니다. MZ세대의 새로운 라이프스타일에 발맞춰<br class="md:hidden"/>
+        지역 사회에 활력을 불어넣는 <span class="font-bold text-gray-800">새로운 교육 일자리 혁명</span>입니다.
+      </p>
+    </section>
 
-    <div class="content">
-      <div class="section">
-        <h3><span class="icon">🎯</span>왜 지금 티칭 워케이셔너인가?</h3>
-        <ul class="feature-list">
-          <li><strong>노마드 라이프 트렌드:</strong> MZ세대의 새로운 라이프스타일</li>
-          <li><strong>교육 서비스 고도화:</strong> 발도르프 기반 차별화된 콘텐츠</li>
-          <li><strong>지역 관광 활성화:</strong> 워케이션과 교육의 융합</li>
-          <li><strong>지속가능한 수익모델:</strong> 전국 네트워크 구축 가능</li>
+    <!-- Image Gallery Section - Visualizing the Experience -->
+    <section class="p-6 md:p-8">
+        <div class="flex flex-col items-center justify-center gap-6">
+            <img src="forest_6 5.png"
+                 alt="아이들과 야외에서 교육 활동을 하는 티칭 워케이셔너"
+                 class="w-full max-w-2xl rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:scale-105"
+                 onerror="this.onerror=null; this.src='https://placehold.co/800x450/667eea/ffffff?text=Image+Not+Available';">
+            <p class="text-center text-sm text-gray-600 md:text-base">
+                제주의 푸른 자연 속에서 아이들과 함께하는 티칭 워케이셔너의 모습입니다.<br class="md:hidden"/>
+                이처럼 생생한 교육 현장이 당신을 기다립니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Sections - The Journey & The Solution -->
+    <main class="grid gap-8 p-6 md:grid-cols-2 md:p-8 lg:p-10">
+      <!-- Section: 왜 지금 티칭 워케이셔너인가? -->
+      <section class="rounded-2xl border-2 border-gray-100 bg-white p-6 shadow-lg md:p-8">
+        <h3 class="mb-4 flex items-center text-2xl font-bold text-gray-800">
+          <i data-lucide="compass" class="lucide mr-3 h-7 w-7 text-red-500"></i>
+          새로운 시대, 새로운 기회
+        </h3>
+        <p class="mb-4 text-gray-700">
+          변화하는 시대, 여러분은 어떤 미래를 꿈꾸시나요? 티칭 워케이셔너는 급부상하는 노마드 라이프와<br class="md:hidden"/>
+          고도화되는 교육 서비스 시장의 교차점에서 탄생했습니다.
+        </p>
+        <ul class="space-y-3">
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">MZ세대의 꿈:</span> 일과 삶의 균형을 찾아 떠나는 <span class="font-semibold text-gray-800">워케이션 트렌드</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">차별화된 교육:</span> 발도르프 기반의 <span class="font-semibold text-gray-800">깊이 있는 교육 콘텐츠</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">지역 상생:</span> 워케이션과 교육의 융합으로 <span class="font-semibold text-gray-800">지역 관광 활성화</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">안정적 미래:</span> 전국 네트워크를 통한 <span class="font-semibold text-gray-800">지속가능한 수익 모델</span>
+          </li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section">
-        <h3><span class="icon">💎</span>핵심 차별화 포인트</h3>
-        <ul class="feature-list">
-          <li><strong>발도르프 교육:</strong> 감각·예술 중심의 전문 커리큘럼</li>
-          <li><strong>AI 기반 자동화:</strong> 효율적인 업무 운영 시스템</li>
-          <li><strong>민간자격증 발급:</strong> 공신력 있는 전문성 인증</li>
-          <li><strong>셀프 브랜딩:</strong> 개인의 특기를 활용한 차별화</li>
+      <!-- Section: 핵심 차별화 포인트 - Your Unique Tools -->
+      <section class="rounded-2xl border-2 border-gray-100 bg-white p-6 shadow-lg md:p-8">
+        <h3 class="mb-4 flex items-center text-2xl font-bold text-gray-800">
+          <i data-lucide="sparkles" class="lucide mr-3 h-7 w-7 text-indigo-500"></i>
+          당신을 위한 특별한 준비물
+        </h3>
+        <p class="mb-4 text-gray-700">
+          단순한 강사가 아닙니다. 저희는 여러분을 독보적인 티칭 워케이셔너로 만들어 줄<br class="md:hidden"/>
+          최고의 시스템과 지원을 약속합니다.
+        </p>
+        <ul class="space-y-3">
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">발도르프 교육:</span> 감각과 예술을 깨우는 <span class="font-semibold text-gray-800">차별화된 전문 커리큘럼</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">AI 기반 시스템:</span> 효율적인 업무를 위한 <span class="font-semibold text-gray-800">스마트 자동화 지원</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">공신력 있는 인증:</span> 민간 자격증으로 <span class="font-semibold text-gray-800">전문성 공식 인정</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">나만의 브랜드:</span> 개인의 특기를 살린 <span class="font-semibold text-gray-800">강력한 셀프 브랜딩 지원</span>
+          </li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section">
-        <h3><span class="icon">🚀</span>지역 경제 파급효과</h3>
-        <div class="stats">
-          <div class="stat-box">
-            <span class="stat-number">30+</span>
-            <span class="stat-label">신규 일자리</span>
+      <!-- Section: 지역 경제 파급효과 - Shared Vision -->
+      <section class="rounded-2xl border-2 border-gray-100 bg-white p-6 shadow-lg md:p-8">
+        <h3 class="mb-6 flex items-center text-2xl font-bold text-gray-800">
+          <i data-lucide="trending-up" class="lucide mr-3 h-7 w-7 text-green-500"></i>
+          함께 만드는 지역의 미래
+        </h3>
+        <p class="mb-4 text-gray-700">
+          여러분의 활약은 단순히 개인의 성공을 넘어, 지역 경제에 새로운 활력을 불어넣습니다.
+        </p>
+        <div class="stats mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="bg-stat-gradient rounded-xl p-4 text-center text-white shadow-md">
+            <span class="block text-3xl font-extrabold">30+</span>
+            <span class="block text-sm opacity-90">새로운 일자리</span>
           </div>
-          <div class="stat-box">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">취업 연계</span>
+          <div class="bg-stat-gradient rounded-xl p-4 text-center text-white shadow-md">
+            <span class="block text-3xl font-extrabold">100%</span>
+            <span class="block text-sm opacity-90">취업 연계 목표</span>
           </div>
-          <div class="stat-box">
-            <span class="stat-number">전국</span>
-            <span class="stat-label">활동 무대</span>
+          <div class="bg-stat-gradient rounded-xl p-4 text-center text-white shadow-md">
+            <span class="block text-3xl font-extrabold">전국</span>
+            <span class="block text-sm opacity-90">활동 영역 확장</span>
           </div>
         </div>
-        <ul class="feature-list">
-          <li>관광업계와의 시너지 창출</li>
-          <li>지역 청년 인재 양성 및 정착</li>
-          <li>워케이션 생태계 구축</li>
+        <ul class="space-y-3">
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            지역 관광업계와의 <span class="font-bold text-gray-800">긍정적 시너지</span> 창출
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold text-gray-800">지역 청년 인재</span> 양성 및 안정적 정착 지원
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            지속가능한 <span class="font-bold text-gray-800">워케이션 생태계</span> 구축 선도
+          </li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section">
-        <h3><span class="icon">⭐</span>수료 후 기대효과</h3>
-        <ul class="feature-list">
-          <li><strong>즉시 수익 창출:</strong> 수료 즉시 '두런 선생님' 활동</li>
-          <li><strong>무료 워케이션:</strong> 우수 수료자 특별 혜택</li>
-          <li><strong>전국 네트워크:</strong> 티칭 워케이셔너 커뮤니티</li>
-          <li><strong>지속 성장:</strong> 개인 브랜드 구축 및 확장</li>
+      <!-- Section: 수료 후 기대효과 - Your Future Story -->
+      <section class="rounded-2xl border-2 border-gray-100 bg-white p-6 shadow-lg md:p-8">
+        <h3 class="mb-4 flex items-center text-2xl font-bold text-gray-800">
+          <i data-lucide="award" class="lucide mr-3 h-7 w-7 text-yellow-500"></i>
+          티칭 워케이셔너, 당신의 이야기
+        </h3>
+        <p class="mb-4 text-gray-700">
+          수료 후, 여러분은 단순한 전문가를 넘어 새로운 삶의 주인공이 됩니다.
+        </p>
+        <ul class="space-y-3">
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">즉각적인 수익 창출:</span> 수료와 동시에 '두런 선생님'으로 <span class="font-semibold text-gray-800">현장 활동 시작</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">꿈같은 워케이션:</span> 우수 수료자에게 주어지는 <span class="font-semibold text-gray-800">무료 워케이션 혜택</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">든든한 네트워크:</span> 전국 티칭 워케이셔너 <span class="font-semibold text-gray-800">커뮤니티와 함께 성장</span>
+          </li>
+          <li class="relative pl-7 text-base text-gray-700 before:absolute before:left-0 before:top-1 before:text-red-500 before:content-['✓']">
+            <span class="font-bold">무한한 성장:</span> 자신만의 교육 브랜드를 <span class="font-semibold text-gray-800">확장하고 발전</span>
+          </li>
         </ul>
-      </div>
-    </div>
+      </section>
+    </main>
 
-    <footer class="footer">
-      <div class="contact">
+    <!-- Footer Section -->
+    <footer class="flex flex-col items-center justify-between gap-4 bg-gray-800 p-6 text-center text-white md:flex-row md:p-8">
+      <div class="text-sm leading-relaxed md:text-base">
         <strong>기업명:</strong> (주)다리메이커 × 동대문청년센터<br />
-        <strong>기업설립연월일:</strong> 2022.07.08 <br />
+        <strong>기업설립연월일:</strong> 2022.07.08
       </div>
-      <a href="https://forms.gle/joPsntPKXz4qDkvt5" target="_blank" class="cta-button">소식 받아보기 📬</a>
+      <a href="https://forms.gle/joPsntPKXz4qDkvt5" target="_blank" class="cta-button inline-block rounded-full border-none bg-gradient-to-r from-red-500 to-orange-500 px-6 py-3 text-lg font-bold text-white shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl">
+        지금, 당신의 새로운 시작을 만나보세요 <span class="ml-2">📬</span>
+      </a>
     </footer>
   </div>
+  <!-- Initialize Lucide icons -->
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
